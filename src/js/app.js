@@ -58,7 +58,7 @@ App = {
     var content = $("#content");
 
     loader.show();
-    content.hide();
+    content.show();
 
     // Load account data
     web3.eth.getCoinbase(function(err, account) {
@@ -67,7 +67,8 @@ App = {
         $("#accountAddress").html("Your Account: " + account);
       }
     });
-
+    
+   
     // Load contract data
     App.contracts.Election.deployed().then(function(instance) {
       electionInstance = instance;
@@ -82,7 +83,7 @@ App = {
       for (var i = 1; i <= candidatesCount; i++) {
         electionInstance.candidates(i).then(function(candidate) {
           var id = candidate[0];
-          var name = candidate[1];
+          var name = candidate[1]; 
           var voteCount = candidate[2];
 
           // Render candidate Result
